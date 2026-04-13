@@ -77,6 +77,14 @@
   "license": "MIT",
   "main": "./dist/index.js",
   "name": "@ethberry/mui-draft-js",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
   "peerDependencies": {
     "@mui/icons-material": "^7.0.0",
     "@mui/material": "^7.0.0",
@@ -98,7 +106,7 @@
     "prebuild": "rimraf dist/",
     "prepare": "husky",
     "storybook": "storybook dev -p 6006",
-    "test": "jest"
+    "test": "jest --config jest.config.json --no-watch --verbose --runInBand"
   },
   "types": "./dist/index.d.ts",
   "version": "7.0.3"

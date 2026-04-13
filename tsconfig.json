@@ -4,13 +4,9 @@
     "declaration": true,
     "esModuleInterop": true,
     "jsx": "react-jsx",
-    "lib": [
-      "es5",
-      "es6",
-      "dom"
-    ],
-    "module": "commonjs",
-    "moduleResolution": "node",
+    "lib": ["es5", "es6", "dom"],
+    "module": "ES2022",
+    "moduleResolution": "bundler",
     "noImplicitAny": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
@@ -25,11 +21,7 @@
     "strictFunctionTypes": true,
     "strictNullChecks": true,
     "strictPropertyInitialization": false,
-    "target": "es2017"
+    "target": "ES2022"
   },
-  "exclude": [
-    "node_modules",
-    "./dist",
-    "./storybook"
-  ]
+  "exclude": ["node_modules", "./dist", "./storybook"]
 }

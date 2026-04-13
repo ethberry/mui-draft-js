@@ -6,8 +6,18 @@ import { MuiDraftJsEditor } from "./index";
 
 afterEach(cleanup);
 
+const testTheme = createTheme({
+  components: {
+    MuiButtonBase: {
+      defaultProps: {
+        disableRipple: true,
+      },
+    },
+  },
+});
+
 const MuiDraftJsEditorWithThemeProvider = (props: any) => (
-  <ThemeProvider theme={createTheme()}>
+  <ThemeProvider theme={testTheme}>
     <MuiDraftJsEditor {...props} />
   </ThemeProvider>
 );
