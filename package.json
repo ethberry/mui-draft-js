@@ -23,7 +23,7 @@
   },
   "description": "Material UI Draft.js editor and viewer",
   "devDependencies": {
-    "ajv": "8.18.0",
+    "ajv": "8.20.0",
     "@emotion/react": "11.14.0",
     "@emotion/styled": "11.14.1",
     "@ethberry/cross-env": "0.0.5",
