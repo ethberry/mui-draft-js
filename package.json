@@ -62,7 +62,7 @@
     "webpack": "5.106.2"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=24"
   },
   "homepage": "https://github.com/ethberry/mui-draft-js#readme",
   "keywords": [
