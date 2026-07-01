@@ -9,20 +9,35 @@ jobs:
     if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v7
+      - name: Checkout
+        uses: actions/checkout@v6
 
       - name: Use Node.js 24
-        uses: actions/setup-node@v7
+        uses: actions/setup-node@v6
         with:
           node-version: "24.x"
 
-      - name: Install Packages npm ci
+      - name: Authenticate Registry & Configure Git User
+        run: |
+          echo "@ethberry:registry=https://npm.pkg.github.com/" >> .npmrc
+          echo "//npm.pkg.github.com/:_authToken=$GITHUBTOKEN" >> .npmrc
+          git update-index --assume-unchanged .npmrc
+          git config --global user.name '@ethberry'
+          git config --global user.email $GITHUBEMAIL
+        env:
+          GITHUBTOKEN: ${{ secrets.GITHUBTOKEN }}
+          GITHUBEMAIL: ${{ secrets.GITHUBEMAIL }}
+
+      - name: Authenticate check via npm
+        run: npm whoami --registry=https://npm.pkg.github.com/
+
+      - name: Install Packages
         run: npm ci
 
       - name: Build Packages
         run: npm run build
 
-      - name: Authenticate GitHub Packages & Configure Git User
+      - name: Prepare .npmrc for GitHub Packages publish
         run: |
           echo "save-exact=true" > .npmrc
           echo "package-lock=false" >> .npmrc
@@ -30,16 +45,8 @@ jobs:
           echo "@ethberry:registry=https://npm.pkg.github.com/" >> .npmrc
           echo "//npm.pkg.github.com/:_authToken=$GITHUBTOKEN" >> .npmrc
           git update-index --assume-unchanged .npmrc
-          npx npm-cli-login -u $GITHUBUSER -p $GITHUBTOKEN -e $GITHUBEMAIL -r https://npm.pkg.github.com -s @ethberry --config-path="./"
-          git config --global user.name '@ethberry'
-          git config --global user.email $GITHUBEMAIL
         env:
           GITHUBTOKEN: ${{ secrets.GITHUBTOKEN }}
-          GITHUBUSER: ${{ secrets.GITHUBUSER }}
-          GITHUBEMAIL: ${{ secrets.GITHUBEMAIL }}
-
-      - name: Authenticate GitHub Packages via npm
-        run: npm whoami --registry=https://npm.pkg.github.com/
 
       - name: Version by NPM
         run: npm version patch -m "[Manual release] [skip ci] %s"
@@ -49,7 +56,7 @@ jobs:
         env:
           GITHUBTOKEN: ${{ secrets.GITHUBTOKEN }}
 
-      - name: Remove File
+      - name: Remove .npmrc
         run: rm -f ./.npmrc
 
       - name: Authenticate NPM Registry & Configure Git User
@@ -63,6 +70,9 @@ jobs:
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
+      - name: Authenticate NPM Registry via npm
+        run: npm whoami --registry=https://registry.npmjs.org/
+
       - name: Publish to NPM
         run: npm publish --access public
         env:
@@ -72,4 +82,3 @@ jobs:
         run: git push --no-verify && git push --tags --no-verify
         env:
           GITHUBTOKEN: ${{ secrets.GITHUBTOKEN }}
-
