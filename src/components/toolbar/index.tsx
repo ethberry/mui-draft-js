@@ -9,7 +9,7 @@ import { ICustomControl, IStyleType, TToolbarButtonSize, TToolbarControl } from 
 export interface IToolbarProps {
   id: string;
   editorState: EditorState;
-  controls?: Array<TToolbarControl>;
+  controls?: TToolbarControl[];
   customControls?: ICustomControl[];
   onClick: (style: string, type: string, id: string, inlineMode?: boolean) => void;
   inlineMode?: boolean;
@@ -43,7 +43,7 @@ export const Toolbar: FC<IToolbarProps> = props => {
           const customControl = customControls.find(style => style.name === name);
           if (customControl && customControl.type !== "atomic" && (customControl.icon || customControl.component)) {
             filteredControls.push({
-              id: customControl.id || customControl.name + "Id",
+              id: customControl.id ?? customControl.name + "Id",
               name: customControl.name as TToolbarControl,
               label: customControl.name,
               style: customControl.name.toUpperCase(),

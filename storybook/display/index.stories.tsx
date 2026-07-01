@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react-webpack5";
 
 import { RichTextDisplay, MuiDraftJsEditor, ICustomControl } from "../../src";
 
@@ -23,7 +23,7 @@ const data = JSON.stringify({
   entityMap: {},
 });
 
-const customControls: Array<ICustomControl> = [];
+const customControls: ICustomControl[] = [];
 
 const Template: Story = { render: args => <RichTextDisplay {...args} data={data} customControls={customControls} /> };
 

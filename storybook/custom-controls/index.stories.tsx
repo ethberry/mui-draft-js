@@ -1,6 +1,6 @@
 import { EditorState } from "draft-js";
 import { InvertColors } from "@mui/icons-material";
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react-webpack5";
 
 import { MuiDraftJsEditor } from "../../src";
 import { MyCallbackComponent } from "./callback-component";

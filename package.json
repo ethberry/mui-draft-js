@@ -23,7 +23,6 @@
   },
   "description": "Material UI Draft.js editor and viewer",
   "devDependencies": {
-    "ajv": "8.20.0",
     "@emotion/react": "11.14.0",
     "@emotion/styled": "11.14.1",
     "@ethberry/cross-env": "0.0.5",
@@ -46,6 +45,8 @@
     "@types/node": "24.13.3",
     "@types/react": "19.2.17",
     "@types/react-dom": "19.2.3",
+    "ajv": "8.20.0",
+    "eslint-plugin-storybook": "10.3.6",
     "husky": "9.1.7",
     "jest": "30.4.2",
     "jest-environment-jsdom": "30.4.1",

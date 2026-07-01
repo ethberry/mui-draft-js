@@ -30,6 +30,7 @@ import {
   RichUtils,
   SelectionState,
 } from "draft-js";
+
 import { Toolbar } from "../toolbar";
 import { ICustomControl, TToolbarButtonSize, TToolbarControl } from "../toolbar/types";
 import { findLinkEntities, Link } from "../link";
@@ -103,13 +104,13 @@ export interface IMuiDraftJsEditorProps {
   readOnly?: boolean;
   inheritFontSize?: boolean;
   error?: boolean;
-  controls?: Array<TToolbarControl>;
+  controls?: TToolbarControl[];
   customControls?: ICustomControl[];
   decorators?: IDecorator[];
   toolbar?: boolean;
   toolbarButtonSize?: TToolbarButtonSize;
   inlineToolbar?: boolean;
-  inlineToolbarControls?: Array<TToolbarControl>;
+  inlineToolbarControls?: TToolbarControl[];
   draftEditorProps?: IDraftEditorProps;
   keyCommands?: IKeyCommand[];
   maxLength?: number;
@@ -160,7 +161,7 @@ const styleRenderMap: DraftStyleMap = {
 
 const autocompleteMinSearchCharCount = 2;
 const lineHeight = 26;
-const defaultInlineToolbarControls = ["bold", "italic", "underline", "clear"] as Array<TToolbarControl>;
+const defaultInlineToolbarControls = ["bold", "italic", "underline", "clear"] as TToolbarControl[];
 
 const findDecoWithRegex = (regex: RegExp, contentBlock: any, callback: any) => {
   const text = contentBlock.getText();
@@ -191,7 +192,7 @@ const useEditorState = (props: IMuiDraftJsEditorProps) => {
     );
   }
   const decorator = new CompositeDecorator(decorators);
-  const defaultValue = props.defaultValue || props.value;
+  const defaultValue = props.defaultValue ?? props.value;
   return defaultValue
     ? EditorState.createWithContent(convertFromRaw(JSON.parse(defaultValue)), decorator)
     : EditorState.createEmpty(decorator);
@@ -236,7 +237,7 @@ export const MuiDraftJsEditor = forwardRef<IMuiDraftJsEditorRef, IMuiDraftJsEdit
   const autocompleteRef = useRef<IAutocompleteStrategy | undefined>(undefined);
   const autocompleteSelectionStateRef = useRef<SelectionState | undefined>(undefined);
   const autocompletePositionRef = useRef<IPosition | undefined>(undefined);
-  const autocompleteLimit = autocomplete ? autocomplete.suggestLimit || 5 : 5;
+  const autocompleteLimit = autocomplete ? (autocomplete.suggestLimit ?? 5) : 5;
   const isFirstFocus = useRef(true);
   const customBlockMapRef = useRef<DraftBlockRenderMap | undefined>(undefined);
   const customStyleMapRef = useRef<DraftStyleMap | undefined>(undefined);
@@ -276,9 +277,7 @@ export const MuiDraftJsEditor = forwardRef<IMuiDraftJsEditorRef, IMuiDraftJsEdit
       top: editor.offsetTop + (top - editorRect.top) + lineHeight,
       left: editor.offsetLeft + (left - editorRect.left),
     };
-    if (!autocompleteSelectionStateRef.current) {
-      autocompleteSelectionStateRef.current = editorStateRef.current!.getSelection();
-    }
+    autocompleteSelectionStateRef.current ??= editorStateRef.current!.getSelection();
     autocompletePositionRef.current = position;
   };
 
@@ -400,7 +399,7 @@ export const MuiDraftJsEditor = forwardRef<IMuiDraftJsEditorRef, IMuiDraftJsEdit
   };
 
   const insertAsyncAtomicBlockPlaceholder = (name: string, placeholder?: string): SelectionState => {
-    const placeholderName = placeholder || name + "...";
+    const placeholderName = placeholder ?? name + "...";
     const currentContentState = editorStateRef.current!.getCurrentContent();
     const entityKey = currentContentState.createEntity("ASYNC_ATOMICBLOCK", "IMMUTABLE").getLastCreatedEntityKey();
     const contentState = Modifier.insertText(
@@ -496,7 +495,7 @@ export const MuiDraftJsEditor = forwardRef<IMuiDraftJsEditorRef, IMuiDraftJsEdit
   };
 
   const handlePromptForMedia = (inlineMode?: boolean, newState?: EditorState) => {
-    const lastState = newState || editorState;
+    const lastState = newState ?? editorState;
     handlePrompt(lastState, "media", inlineMode);
   };
 
@@ -593,7 +592,7 @@ export const MuiDraftJsEditor = forwardRef<IMuiDraftJsEditorRef, IMuiDraftJsEdit
   };
 
   const handleAutocompleteSelected = (index?: number) => {
-    const itemIndex = index || selectedIndex;
+    const itemIndex = index ?? selectedIndex;
     const items = getAutocompleteItems();
     if (items.length > itemIndex) {
       const item = items[itemIndex];
@@ -950,11 +949,7 @@ export const MuiDraftJsEditor = forwardRef<IMuiDraftJsEditorRef, IMuiDraftJsEdit
   const updateSearchTermForKeyBinding = (keyBinding: DraftEditorCommand | null) => {
     const text = editorStateRef.current!.getCurrentContent().getLastBlock().getText();
 
-    if (
-      keyBinding === "backspace" &&
-      autocompleteRef.current &&
-      text.substr(text.length - 1) === autocompleteRef.current.triggerChar
-    ) {
+    if (keyBinding === "backspace" && text.substr(text.length - 1) === autocompleteRef.current?.triggerChar) {
       clearSearch();
     } else if (autocompletePositionRef.current && keyBinding === "backspace" && searchTerm.length) {
       setSearchTerm(searchTerm.substr(0, searchTerm.length - 1));
@@ -1004,7 +999,7 @@ export const MuiDraftJsEditor = forwardRef<IMuiDraftJsEditorRef, IMuiDraftJsEdit
           tabIndex={0}
           onFocus={handlePlaceholderFocus}
         >
-          {label || ""}
+          {label ?? ""}
         </Box>
       );
       hidePlaceholder = true;

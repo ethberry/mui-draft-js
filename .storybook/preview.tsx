@@ -1,6 +1,6 @@
 import { CssBaseline } from "@mui/material";
 import { createTheme, ThemeProvider, StyledEngineProvider } from "@mui/material/styles";
-import { Preview } from "@storybook/react";
+import { Preview } from "@storybook/react-webpack5";
 import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport";
 
 export const decorators = [

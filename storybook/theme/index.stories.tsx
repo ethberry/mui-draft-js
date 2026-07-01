@@ -1,5 +1,5 @@
 import { ThemeProvider } from "@mui/material";
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react-webpack5";
 
 import { MuiDraftJsEditor } from "../../src";
 import { defaultTheme } from "./theme";

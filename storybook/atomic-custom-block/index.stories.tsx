@@ -1,6 +1,6 @@
 import { Fragment, useRef, useState } from "react";
 import { WebAsset } from "@mui/icons-material";
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react-webpack5";
 
 import { IMuiDraftJsEditorRef, MuiDraftJsEditor, TAnchor } from "../../src";
 import { MyCard } from "./my-card";

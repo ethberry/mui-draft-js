@@ -8,7 +8,7 @@ import { Link, findLinkEntities } from "../link";
 
 export interface IRichTextDisplayProps {
   data: any;
-  customControls?: Array<ICustomControl>;
+  customControls?: ICustomControl[];
 }
 
 export const RichTextDisplay: FC<IRichTextDisplayProps> = props => {

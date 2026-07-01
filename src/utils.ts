@@ -9,6 +9,7 @@ import {
   DraftStyleMap,
   DraftInlineStyle,
 } from "draft-js";
+
 import { ICustomControl } from "./components/toolbar/types";
 
 export interface ISelectionInfo {

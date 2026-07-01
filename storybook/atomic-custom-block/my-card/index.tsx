@@ -26,7 +26,7 @@ export const MyCard: FC<any> = props => {
       />
       <CardMedia
         style={{ height: 0, paddingTop: "56.25%" }}
-        image={blockProps.image || "default"}
+        image={blockProps.image ?? "default"}
         title={blockProps.title}
       />
       <CardContent>

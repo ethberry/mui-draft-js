@@ -1,6 +1,6 @@
 import { KeyboardEvent } from "react";
 import { EditorState, RichUtils } from "draft-js";
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react-webpack5";
 
 import { MuiDraftJsEditor } from "../../src";
 

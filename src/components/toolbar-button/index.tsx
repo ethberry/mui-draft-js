@@ -35,7 +35,7 @@ export const ToolbarButton: FC<IToolbarButtonProps> = props => {
   } = props;
 
   const toolbarId = inlineMode ? "-toolbar" : "";
-  const elemId = editorId + "-" + (id || label) + "-button" + toolbarId;
+  const elemId = editorId + "-" + (id ?? label) + "-button" + toolbarId;
 
   const mouseDownHandler = (e: MouseEvent) => {
     e.preventDefault();
@@ -50,7 +50,7 @@ export const ToolbarButton: FC<IToolbarButtonProps> = props => {
         id={elemId}
         aria-label={label}
         color={active ? "primary" : "default"}
-        size={!inlineMode ? size || "medium" : "small"}
+        size={!inlineMode ? (size ?? "medium") : "small"}
         disabled={disabled}
         onMouseDown={mouseDownHandler}
         data-testid="toolbar-button"
@@ -64,7 +64,7 @@ export const ToolbarButton: FC<IToolbarButtonProps> = props => {
     return (
       <Component
         id={elemId}
-        active={active || false}
+        active={active ?? false}
         disabled={disabled}
         onMouseDown={mouseDownHandler}
         data-testid="toolbar-button"

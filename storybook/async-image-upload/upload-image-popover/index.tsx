@@ -67,7 +67,7 @@ export const UploadImagePopover: FC<IUploadImagePopoverProps> = props => {
           <TextField
             style={{ width: "100%" }}
             disabled
-            value={data.file?.name || ""}
+            value={data.file?.name ?? ""}
             placeholder="Click icon to attach image"
           />
         </Grid>

@@ -35,7 +35,7 @@ export const UrlPopover: FC<IUrlPopoverStateProps> = props => {
   const { data: propData, anchor, isMedia, onConfirm } = props;
 
   const [data, setData] = useState<IUrlData>(
-    propData || {
+    propData ?? {
       url: undefined,
       width: undefined,
       height: undefined,
@@ -114,7 +114,7 @@ export const UrlPopover: FC<IUrlPopoverStateProps> = props => {
                 <Grid size={{ xs: 6 }}>
                   <TextField
                     onChange={event => onSizeChange(event.target.value, "width")}
-                    value={data.width || ""}
+                    value={data.width ?? ""}
                     label="Width"
                     InputLabelProps={{
                       shrink: true,
@@ -124,7 +124,7 @@ export const UrlPopover: FC<IUrlPopoverStateProps> = props => {
                 <Grid size={{ xs: 6 }}>
                   <TextField
                     onChange={event => onSizeChange(event.target.value, "height")}
-                    value={data.height || ""}
+                    value={data.height ?? ""}
                     label="Height"
                     InputLabelProps={{
                       shrink: true,

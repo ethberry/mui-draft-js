@@ -1,5 +1,5 @@
 import { Fragment, useRef, useState } from "react";
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react-webpack5";
 import { Update } from "@mui/icons-material";
 
 import { IMuiDraftJsEditorRef, MuiDraftJsEditor, TAnchor } from "../../src";
