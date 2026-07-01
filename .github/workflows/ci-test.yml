@@ -44,7 +44,7 @@ jobs:
         run: npm whoami --registry=https://npm.pkg.github.com/
 
       - name: Install Packages
-        run: npm i
+        run: npm ci
 
       - name: Build Packages
         run: npm run build
