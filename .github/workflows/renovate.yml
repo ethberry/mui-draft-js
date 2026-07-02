@@ -1,0 +1,95 @@
+# Publishes with Node.js 24.x after Renovate deps PR merge
+name: CD Renovate
+
+on:
+  pull_request:
+    branches:
+      - main
+    types: [closed]
+
+jobs:
+  renovate-release-patch:
+    if: ${{ github.event.pull_request.merged == true && startsWith(github.event.pull_request.head.ref, 'renovate/') }}
+    runs-on: ubuntu-latest
+    env:
+      HUSKY: "0"
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Fetch tags
+        run: git fetch --force --tags origin
+
+      - name: Use Node.js 24
+        uses: actions/setup-node@v6
+        with:
+          node-version: "24.x"
+
+      - name: Authenticate Registry & Configure Git User
+        run: |
+          echo "@ethberry:registry=https://npm.pkg.github.com/" >> .npmrc
+          echo "//npm.pkg.github.com/:_authToken=$GITHUBTOKEN" >> .npmrc
+          git update-index --assume-unchanged .npmrc
+          git config --global user.name '@ethberry'
+          git config --global user.email $GITHUBEMAIL
+        env:
+          GITHUBTOKEN: ${{ secrets.GITHUBTOKEN }}
+          GITHUBEMAIL: ${{ secrets.GITHUBEMAIL }}
+
+      - name: Authenticate check via npm
+        run: npm whoami --registry=https://npm.pkg.github.com/
+
+      - name: Install Packages
+        run: npm ci
+
+      - name: Build Packages
+        run: npm run build
+
+      - name: Prepare .npmrc for GitHub Packages publish
+        run: |
+          echo "save-exact=true" > .npmrc
+          echo "package-lock=false" >> .npmrc
+          echo "legacy-peer-deps=true" >> .npmrc
+          echo "@ethberry:registry=https://npm.pkg.github.com/" >> .npmrc
+          echo "//npm.pkg.github.com/:_authToken=$GITHUBTOKEN" >> .npmrc
+          git update-index --assume-unchanged .npmrc
+        env:
+          GITHUBTOKEN: ${{ secrets.GITHUBTOKEN }}
+
+      - name: Version by NPM
+        run: npm version patch -m "[Renovate publish] [skip ci] %s"
+
+      - name: Publish to GitHub Packages
+        run: npm publish
+        env:
+          GITHUBTOKEN: ${{ secrets.GITHUBTOKEN }}
+
+      - name: Remove .npmrc
+        run: rm -f ./.npmrc
+
+      - name: Authenticate NPM Registry & Configure Git User
+        run: |
+          echo "save-exact=true" > .npmrc
+          echo "package-lock=false" >> .npmrc
+          echo "legacy-peer-deps=true" >> .npmrc
+          git update-index --assume-unchanged .npmrc
+          echo "@ethberry:registry=https://registry.npmjs.org/" >> .npmrc
+          echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> .npmrc
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Authenticate NPM Registry via npm
+        run: npm whoami --registry=https://registry.npmjs.org/
+
+      - name: Publish to NPM
+        run: npm publish --access public
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Git push
+        run: git push --no-verify && git push --tags --no-verify
+        env:
+          GITHUBTOKEN: ${{ secrets.GITHUBTOKEN }}
