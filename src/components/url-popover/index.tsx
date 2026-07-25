@@ -116,8 +116,10 @@ export const UrlPopover: FC<IUrlPopoverStateProps> = props => {
                     onChange={event => onSizeChange(event.target.value, "width")}
                     value={data.width ?? ""}
                     label="Width"
-                    InputLabelProps={{
-                      shrink: true,
+                    slotProps={{
+                      inputLabel: {
+                        shrink: true,
+                      },
                     }}
                   />
                 </Grid>
@@ -126,8 +128,10 @@ export const UrlPopover: FC<IUrlPopoverStateProps> = props => {
                     onChange={event => onSizeChange(event.target.value, "height")}
                     value={data.height ?? ""}
                     label="Height"
-                    InputLabelProps={{
-                      shrink: true,
+                    slotProps={{
+                      inputLabel: {
+                        shrink: true,
+                      },
                     }}
                   />
                 </Grid>
@@ -159,7 +163,7 @@ export const UrlPopover: FC<IUrlPopoverStateProps> = props => {
               </Fragment>
             ) : null}
           </Grid>
-          <Grid container size={{ xs: 12 }} direction="row" justifyContent="flex-end">
+          <Grid container size={{ xs: 12 }} direction="row" sx={{ justifyContent: "flex-end" }}>
             {data?.url ? (
               <Button onClick={() => onConfirm(isMedia, "")}>
                 <Delete />

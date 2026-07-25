@@ -90,7 +90,7 @@ export const UploadImagePopover: FC<IUploadImagePopoverProps> = props => {
             </IconButton>
           </label>
         </Grid>
-        <Grid container size={{ xs: 12 }} justifyContent="flex-end">
+        <Grid container size={{ xs: 12 }} sx={{ justifyContent: "flex-end" }}>
           <Button
             onClick={() => {
               setState({
