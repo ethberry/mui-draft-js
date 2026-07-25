@@ -53,8 +53,10 @@ export const MyCardPopover: FC<IMyCardPopoverProps> = props => {
       width: "100%",
     },
     onChange: handleChange,
-    InputLabelProps: {
-      shrink: true,
+    slotProps: {
+      inputLabel: {
+        shrink: true,
+      },
     },
   };
 
@@ -96,7 +98,7 @@ export const MyCardPopover: FC<IMyCardPopoverProps> = props => {
         <Grid size={{ xs: 12 }}>
           <TextField {...textFieldProps} label="Image URL" name="image" />
         </Grid>
-        <Grid container size={{ xs: 12 }} justifyContent="flex-end">
+        <Grid container size={{ xs: 12 }} sx={{ justifyContent: "flex-end" }}>
           <Button
             onClick={() => {
               setState({
