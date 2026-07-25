@@ -110,5 +110,5 @@
     "test": "jest --config jest.config.json --no-watch --verbose --runInBand"
   },
   "types": "./dist/index.d.ts",
-  "version": "7.0.5"
+  "version": "7.0.6"
 }
