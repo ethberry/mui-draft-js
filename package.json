@@ -39,18 +39,18 @@
     "@storybook/react": "10.5.7",
     "@storybook/react-webpack5": "10.5.7",
     "@testing-library/jest-dom": "7.0.1",
-    "@testing-library/react": "16.3.2",
+    "@testing-library/react": "16.3.3",
     "@types/draft-js": "0.11.20",
     "@types/jest": "30.0.0",
     "@types/node": "24.13.3",
     "@types/react": "19.2.18",
-    "@types/react-dom": "19.2.4",
+    "@types/react-dom": "19.2.5",
     "ajv": "8.20.0",
     "eslint-plugin-storybook": "10.5.10",
     "husky": "9.1.7",
-    "jest": "30.4.2",
-    "jest-environment-jsdom": "30.4.1",
-    "lint-staged": "17.3.0",
+    "jest": "30.5.0",
+    "jest-environment-jsdom": "30.5.0",
+    "lint-staged": "17.4.1",
     "prettier": "3.9.6",
     "react": "19.2.8",
     "react-dom": "19.2.8",
@@ -60,7 +60,7 @@
     "ts-jest": "29.4.12",
     "ts-node": "10.9.2",
     "typescript": "5.9.3",
-    "webpack": "5.109.2"
+    "webpack": "5.110.1"
   },
   "engines": {
     "node": ">=24"
