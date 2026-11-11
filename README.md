@@ -48,7 +48,7 @@ ReactDOM.render(
 
 ## Examples
 
-Check the [examples](https://github.com/ethberry/mui-draft-js/tree/master/examples) directory for more.
+Check the [examples](https://github.com/ethberry/mui-draft-js/tree/main/examples) directory for more.
 
 ## Custom Controls
 
@@ -116,13 +116,13 @@ const MyBlock: FC = props => {
 
 <img src="https://raw.githubusercontent.com/niuware/niuware.github.io/master/public/assets/mui-draft-js/async-upload-demo.gif" width="600" />
 
-It is possible to insert custom blocks based on asynchronous behavior using the `insertAtomicBlockAsync` API. The above example shows an [example](https://github.com/ethberry/mui-draft-js/blob/master/examples/async-image-upload/index.tsx) on how to upload an image and use the `MuiDraftJsEditor` default image control for further edition. You can use this behavior to upload a file when dropping it inside the editor and render it as an image entity after upload.
+It is possible to insert custom blocks based on asynchronous behavior using the `insertAtomicBlockAsync` API. The above example shows an [example](https://github.com/ethberry/mui-draft-js/blob/main/examples/async-image-upload/index.tsx) on how to upload an image and use the `MuiDraftJsEditor` default image control for further edition. You can use this behavior to upload a file when dropping it inside the editor and render it as an image entity after upload.
 
-Check this [other sample](https://github.com/ethberry/mui-draft-js/blob/master/examples/async-atomic-custom-block/index.tsx) that shows how to add a `@mui/material` Card with asynchronous downloaded content.
+Check this [other sample](https://github.com/ethberry/mui-draft-js/blob/main/examples/async-atomic-custom-block/index.tsx) that shows how to add a `@mui/material` Card with asynchronous downloaded content.
 
 ### Adding a custom atomic block (Sync)
 
-Check [this sample](https://github.com/ethberry/mui-draft-js/blob/master/examples/atomic-custom-block/index.tsx) that shows how to create a control to add a `@mui/material` Card component to the editor.
+Check [this sample](https://github.com/ethberry/mui-draft-js/blob/main/examples/atomic-custom-block/index.tsx) that shows how to create a control to add a `@mui/material` Card component to the editor.
 
 ### Adding a custom callback control
 
@@ -192,11 +192,11 @@ const emojis = [
 />
 ```
 
-Check [this sample](https://github.com/ethberry/mui-draft-js/blob/master/examples/autocomplete/index.tsx) that shows how to add multiple autocomplete strategies to a single editor.
+Check [this sample](https://github.com/ethberry/mui-draft-js/blob/main/examples/autocomplete/index.tsx) that shows how to add multiple autocomplete strategies to a single editor.
 
 ### Atomic strategy example
 
-Check [this sample](https://github.com/ethberry/mui-draft-js/blob/master/examples/autocomplete/index.tsx) that shows how to combine atomic custom controls with the autocomplete strategy feature.
+Check [this sample](https://github.com/ethberry/mui-draft-js/blob/main/examples/autocomplete/index.tsx) that shows how to combine atomic custom controls with the autocomplete strategy feature.
 
 ## Custom Decorators
 
