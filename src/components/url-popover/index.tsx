@@ -10,7 +10,7 @@ import {
   Movie,
 } from "@mui/icons-material";
 
-import { TAnchor } from "../types";
+import { TAnchor } from "../types.js";
 
 export type TAlignment = "left" | "center" | "right";
 

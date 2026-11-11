@@ -1,8 +1,9 @@
+import { jest } from "@jest/globals";
 import { cleanup, fireEvent, render } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { createTheme, ThemeProvider } from "@mui/material";
 
-import { MuiDraftJsEditor } from "./index";
+import { MuiDraftJsEditor } from "./index.js";
 
 afterEach(cleanup);
 

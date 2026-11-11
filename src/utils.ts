@@ -10,7 +10,7 @@ import {
   DraftInlineStyle,
 } from "draft-js";
 
-import { ICustomControl } from "./components/toolbar/types";
+import { ICustomControl } from "./components/toolbar/types.js";
 
 export interface ISelectionInfo {
   inlineStyle: DraftInlineStyle;

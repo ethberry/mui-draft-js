@@ -31,14 +31,14 @@ import {
   SelectionState,
 } from "draft-js";
 
-import { Toolbar } from "../toolbar";
-import { ICustomControl, TToolbarButtonSize, TToolbarControl } from "../toolbar/types";
-import { findLinkEntities, Link } from "../link";
-import { Media } from "../media";
-import { Blockquote } from "../blockquote";
-import { CodeBlock } from "../code-block";
-import { IUrlData, TAlignment, TMediaType, UrlPopover } from "../url-popover";
-import { Autocomplete, IAutocompleteItem } from "../autocomplete";
+import { Toolbar } from "../toolbar/index.js";
+import { ICustomControl, TToolbarButtonSize, TToolbarControl } from "../toolbar/types.js";
+import { findLinkEntities, Link } from "../link/index.js";
+import { Media } from "../media/index.js";
+import { Blockquote } from "../blockquote/index.js";
+import { CodeBlock } from "../code-block/index.js";
+import { IUrlData, TAlignment, TMediaType, UrlPopover } from "../url-popover/index.js";
+import { Autocomplete, IAutocompleteItem } from "../autocomplete/index.js";
 import {
   atomicBlockExists,
   clearInlineStyles,
@@ -47,7 +47,7 @@ import {
   getSelectionInfo,
   isGreaterThan,
   removeBlockFromMap,
-} from "../../utils";
+} from "../../utils.js";
 
 export interface IDecorator {
   component: FC<any>;

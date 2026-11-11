@@ -1,10 +1,10 @@
 import { FC, useEffect, useState } from "react";
 import { EditorState } from "draft-js";
 
-import { getSelectionInfo } from "../../utils";
-import { ToolbarButton } from "../toolbar-button";
-import { STYLE_TYPES } from "./style-types";
-import { ICustomControl, IStyleType, TToolbarButtonSize, TToolbarControl } from "./types";
+import { getSelectionInfo } from "../../utils.js";
+import { ToolbarButton } from "../toolbar-button/index.js";
+import { STYLE_TYPES } from "./style-types.js";
+import { ICustomControl, IStyleType, TToolbarButtonSize, TToolbarControl } from "./types.js";
 
 export interface IToolbarProps {
   id: string;

@@ -17,7 +17,7 @@ import {
   Undo,
 } from "@mui/icons-material";
 
-import { IStyleType } from "./types";
+import { IStyleType } from "./types.js";
 
 export const STYLE_TYPES: IStyleType[] = [
   {
