@@ -1,7 +1,7 @@
 import { FC, MouseEvent } from "react";
 import { IconButton } from "@mui/material";
 
-import { IToolbarComponentProps, TToolbarButtonSize } from "../toolbar/types";
+import { IToolbarComponentProps, TToolbarButtonSize } from "../toolbar/types.js";
 
 interface IToolbarButtonProps {
   id?: string;

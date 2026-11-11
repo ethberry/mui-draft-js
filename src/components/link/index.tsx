@@ -8,7 +8,7 @@ interface ILinkProps {
   entityKey: string;
 }
 
-export * from "./utils";
+export * from "./utils.js";
 
 export const Link: FC<PropsWithChildren<ILinkProps>> = props => {
   const { contentState, entityKey, children } = props;

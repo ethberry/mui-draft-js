@@ -1,10 +1,10 @@
 import { FC } from "react";
 import { Editor, EditorState, convertFromRaw, ContentBlock, CompositeDecorator } from "draft-js";
 
-import { atomicBlockExists } from "../../utils";
-import { ICustomControl } from "../toolbar/types";
-import { Media } from "../media";
-import { Link, findLinkEntities } from "../link";
+import { atomicBlockExists } from "../../utils.js";
+import { ICustomControl } from "../toolbar/types.js";
+import { Media } from "../media/index.js";
+import { Link, findLinkEntities } from "../link/index.js";
 
 export interface IRichTextDisplayProps {
   data: any;

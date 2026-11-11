@@ -1,9 +1,9 @@
 import { cleanup, render } from "@testing-library/react";
 import { EditorState } from "draft-js";
 
-import { TToolbarControl } from "./types";
+import { TToolbarControl } from "./types.js";
 
-import { Toolbar } from "./index";
+import { Toolbar } from "./index.js";
 
 afterEach(cleanup);
 

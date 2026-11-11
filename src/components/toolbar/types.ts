@@ -1,7 +1,7 @@
 import { CSSProperties, FC, MouseEvent, ReactElement } from "react";
 import { EditorState } from "draft-js";
 
-import { TAnchor } from "../types";
+import { TAnchor } from "../types.js";
 
 export type TToolbarControl =
   | "title"
